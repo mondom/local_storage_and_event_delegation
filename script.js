@@ -17,4 +17,10 @@ function addItem(e) {
     console.table(items);
 }
 
+function populateList(plates = [], platesList){
+    // w parametrach przekazujemy tablicę items, ale zabezpieczamy się, że domyślnie ma być pusta. oraz listę dań, którą chcemy uzupełniać o wprowadzone dane.
+}
+
 addItems.addEventListener('submit', addItem)
+
+// 8:30
