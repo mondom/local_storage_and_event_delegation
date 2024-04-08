@@ -23,4 +23,4 @@ function populateList(plates = [], platesList){
 
 addItems.addEventListener('submit', addItem)
 
-// 8:30
+// 8:30 
