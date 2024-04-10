@@ -24,17 +24,23 @@ function populateList(plates = [], platesList) {
 	// ustawimy to tak, aby domyślnie była to pusta tablica. Powodem, dla którego to robię, jest to, że jeśli z jakiegoś powodu zapomnisz czegoś przekazać, nie zepsuje to twojego js.
 	platesList.innerHTML = plates
 		.map((plate, index) => {
-			return `<li>${plate.text}</li>`
+			return `
+			<li> 
+			<input type="checkbox" data-index=${index} id="item${index}" ${plate.done ? 'checked' : ''}/>
+			<label for="item${index}">${plate.text}</label>
+			</li>
+			`;
+			// używamy operatora warunkowego w inpucie do warunkowego dodawania atrybutu checked do elementu <input>. Instrukcja warunkowa jest przydatna tylko wtedy, gdybyś chciała dynamicznie określać, czy nowo utworzony <input> ma być zaznaczony (czyli czy ma mieć atrybut checked) na podstawie pewnych warunków.
 		})
 		.join('')
 	// ↑ musi być return, bo inaczej map nic nie zwróci
-	platesList.innerHTML = plates.map((plate, index) => `<li>${plate.text}</li>`).join('')
+	// platesList.innerHTML = plates.map((plate, index) => `<li>${plate.text}</li>`).join('')
 	// ↑ ten sam zapis bez return - jest ono tutaj domyśle
 }
 
 addItems.addEventListener('submit', addItem)
 // W tym kontekście, addItem jest funkcją obsługi zdarzeń, która zostanie wywołana, gdy formularz zostanie przesłany (czyli po kliknięciu przycisku "submit" lub naciśnięciu klawisza Enter, gdy pole formularza jest aktywne). Ta funkcja obsługi zdarzeń może zawierać logikę dodawania nowych elementów do listy lub inne operacje, które mają być wykonane po przesłaniu formularza.
 
-// 8:30
+// 15:00
 
 
