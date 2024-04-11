@@ -1,6 +1,6 @@
 const addItems = document.querySelector('.add-items')
 const itemsList = document.querySelector('.plates')
-const items = []
+const items = JSON.parse(localStorage.getItem('items')) || []
 
 function addItem(e) {
 	e.preventDefault()
@@ -15,6 +15,9 @@ function addItem(e) {
 	items.push(item)
 	// console.table(items)
 	populateList(items, itemsList)
+	localStorage.setItem("items", JSON.stringify
+	(items))
+	// ↑ zapisanie danych z naszej tablicy items w local storage - trzeba zrobic konwersję danych na string
 	this.reset()
 	// ↑ Jedną rzeczą, którą chcemy zrobić, jest wyczyszczenie tego wejścia.To, co możemy zrobić, to powiedzieć "this.reset".Ponieważ "this" jest elementem formularza, a elementy formularza mają metodę o nazwie "reset".Prawdopodobnie spotkałeś się z sytuacją, w której spędziłeś godzinę wypełniając gdzieś formularz online i przypadkowo kliknąłeś przycisk resetowania zamiast przycisku przesyłania.Właśnie do tego jest podłączony "reset".
 }
@@ -40,7 +43,8 @@ function populateList(plates = [], platesList) {
 
 addItems.addEventListener('submit', addItem)
 // W tym kontekście, addItem jest funkcją obsługi zdarzeń, która zostanie wywołana, gdy formularz zostanie przesłany (czyli po kliknięciu przycisku "submit" lub naciśnięciu klawisza Enter, gdy pole formularza jest aktywne). Ta funkcja obsługi zdarzeń może zawierać logikę dodawania nowych elementów do listy lub inne operacje, które mają być wykonane po przesłaniu formularza.
-
+populateList(items, itemsList)
+// ostatnią rzeczą, jaką chcemy aby się wykonała po załadowaniu strony wywołanie funkcji populateList - która tworzy nam listę naszych dań. Ale items - czyli nasza tablica z obiektami jest pusta na początku ładowania, dlatego do niej będziemy chcieli pobrać dane z local storage.
 // 15:00
 
 
