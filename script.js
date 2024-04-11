@@ -47,14 +47,33 @@ function toggleDone(e) {
 	if (!e.target.matches('input')) return
 	// w ten sposób e.target to input checkbox
 	const el = e.target
-	console.log(el.dataset.index);
+	console.log(el.dataset.index)
 	const index = el.dataset.index
 	items[index].done = !items[index].done
-// ↑ togglujemy przy klikaniu w checbox wartością w kluczu done, i po aktualizacji wysyłamy dane do local storage ↓
+	// ↑ togglujemy przy klikaniu w checbox wartością w kluczu done, i po aktualizacji wysyłamy dane do local storage ↓
 	localStorage.setItem('items', JSON.stringify(items))
 }
 
+const checkBtn = document.querySelector('.check-all')
+let firstClick = true
 
+function checkAll(e) {
+	e.preventDefault()
+	const items = itemsList.querySelectorAll('input[type="checkbox"]')
+	if ((firstClick)) {
+		items.forEach(item => {
+			item.checked = true
+		})
+		firstClick = false
+	} else {
+		items.forEach(item => {
+			item.checked = !item.checked
+		})
+	}
+	
+}
+
+checkBtn.addEventListener('click', checkAll)
 addItems.addEventListener('submit', addItem)
 // W tym kontekście, addItem jest funkcją obsługi zdarzeń, która zostanie wywołana, gdy formularz zostanie przesłany (czyli po kliknięciu przycisku "submit" lub naciśnięciu klawisza Enter, gdy pole formularza jest aktywne). Ta funkcja obsługi zdarzeń może zawierać logikę dodawania nowych elementów do listy lub inne operacje, które mają być wykonane po przesłaniu formularza.
 itemsList.addEventListener('click', toggleDone)
