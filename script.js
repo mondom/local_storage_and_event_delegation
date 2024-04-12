@@ -80,3 +80,6 @@ itemsList.addEventListener('click', toggleDone)
 populateList(items, itemsList)
 // ostatnią rzeczą, jaką chcemy aby się wykonała po załadowaniu strony wywołanie funkcji populateList - która tworzy nam listę naszych dań. Ale items - czyli nasza tablica z obiektami jest pusta na początku ładowania, dlatego do niej będziemy chcieli pobrać dane z local storage.
 // 15:00
+
+
+
